@@ -86,12 +86,11 @@ void main(void) {
 		);
 	} else Result -= 1.0;
 
-	// The absolute will be the checkered pattern
-	Result = abs(Result);
-
+	// The absolute of the Result will contain the checkered pattern
+	
 	// Apply colors to the pattern and output
 	gl_FragColor = vec4(
-		mix(ColorA, ColorB, Result),
+		mix(ColorA, ColorB, abs(Result)),
 		1.0
 	);
 }
