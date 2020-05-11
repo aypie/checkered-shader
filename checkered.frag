@@ -12,23 +12,20 @@ uniform vec2 u_resolution;
 #define SpeedX 10.0
 #define SpeedY 20.0
 
-// Returns how much a position is inside a slice of a certain width
-// The slice will have a smoothed edge to avoid movement aliasing
 float Edge(float Origin, float Position, float Size) {
-	float Result;
+	// Assuming this function only gets called outside of the slice
+	// we only need to find a smooth edge that's defined as the
+	// inverted distance from the edge
 
 	// First we find a relative position of a pixel
 	float Relation = Position - Origin;
+	float Result;
 
-	// If the pixel is actually inside the "box" - return 1
-	// If not, return inverted distance from the edge for the smoothing effect
-	if (Relation > 0.0) {
-		if (Relation < Size) {
-			Result = 1.0;
-		} else Result = 1.0 - (Relation - Size);
-	} else Result = 1.0 + Relation;
+	// Finding the distance from the edge and inverting it
+	if (Relation > 0.0) Result = 1.0 - (Relation - Size);
+	else Result = 1.0 + Relation;
 
-	// Clamp result so the inverted distance doesnt go lower than 0
+	// Clamping the value to it doesn't go below 0
 	return clamp(Result, 0.0, 1.0);
 }
 
