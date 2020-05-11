@@ -14,7 +14,7 @@ uniform vec2 u_resolution;
 
 // Returns how much a position is inside a slice of a certain width
 // The slice will have a smoothed edge to avoid movement aliasing
-float Box(float Origin, float Position, float Size) {
+float Edge(float Origin, float Position, float Size) {
 	float Result;
 
 	// First we find a relative position of a pixel
@@ -56,7 +56,7 @@ void main(void) {
 
 	/*
 		We find if current pixel's position is inside the slice
-		and if it's not - we smooth the edges of slices using Box()
+		and if it's not - we smooth the edges of slices using Edge()
 
 		We do this once verticaly and once horizontaly, and then
 		negative-overlap the results to get the checkered pattern
@@ -64,12 +64,12 @@ void main(void) {
 
 	// Vertical slices
 	if (EachSecond(Position.y, BoxSize)) {
-		Result += Box(	// Slice below
+		Result += Edge(	// Slice below
 			Left(Position.y, BoxSize) - BoxSize,
 			Position.y,
 			BoxSize
 		);
-		Result += Box(	// Slice above
+		Result += Edge(	// Slice above
 			Left(Position.y, BoxSize) + BoxSize,
 			Position.y,
 			BoxSize
@@ -78,12 +78,12 @@ void main(void) {
 
 	// Horizontal slices
 	if (EachSecond(Position.x, BoxSize)) {
-		Result -= Box(	// Left slice
+		Result -= Edge(	// Left slice
 			Left(Position.x, BoxSize) - BoxSize,
 			Position.x,
 			BoxSize
 		);
-		Result -= Box(	// Right slice
+		Result -= Edge(	// Right slice
 			Left(Position.x, BoxSize) + BoxSize,
 			Position.x,
 			BoxSize
