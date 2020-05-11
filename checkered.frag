@@ -12,6 +12,7 @@ uniform vec2 u_resolution;
 #define SpeedX 10.0
 #define SpeedY 20.0
 
+// Smooth the slices by adding a one-pixel wide fallof on the edges
 float Edge(float Origin, float Position, float Size) {
 	// Assuming this function only gets called outside of the slice
 	// we only need to find a smooth edge that's defined as the
