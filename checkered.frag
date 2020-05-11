@@ -8,7 +8,7 @@ uniform vec2 u_resolution;
 // Definitions
 #define ColorA vec3(0.5, 0.5, 0.5)
 #define ColorB vec3(0.8, 0.8, 0.8)
-#define BoxSize 64.0
+#define CheckSize 64.0
 #define SpeedX 10.0
 #define SpeedY 20.0
 
@@ -60,30 +60,30 @@ void main(void) {
 	*/
 
 	// Vertical slices
-	if (EachSecond(Position.y, BoxSize)) {
+	if (EachSecond(Position.y, CheckSize)) {
 		Result += Edge(	// Slice below
-			Left(Position.y, BoxSize) - BoxSize,
+			Left(Position.y, CheckSize) - CheckSize,
 			Position.y,
-			BoxSize
+			CheckSize
 		);
 		Result += Edge(	// Slice above
-			Left(Position.y, BoxSize) + BoxSize,
+			Left(Position.y, CheckSize) + CheckSize,
 			Position.y,
-			BoxSize
+			CheckSize
 		);
 	} else Result += 1.0;
 
 	// Horizontal slices
-	if (EachSecond(Position.x, BoxSize)) {
+	if (EachSecond(Position.x, CheckSize)) {
 		Result -= Edge(	// Left slice
-			Left(Position.x, BoxSize) - BoxSize,
+			Left(Position.x, CheckSize) - CheckSize,
 			Position.x,
-			BoxSize
+			CheckSize
 		);
 		Result -= Edge(	// Right slice
-			Left(Position.x, BoxSize) + BoxSize,
+			Left(Position.x, CheckSize) + CheckSize,
 			Position.x,
-			BoxSize
+			CheckSize
 		);
 	} else Result -= 1.0;
 
