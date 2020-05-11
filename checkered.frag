@@ -19,14 +19,12 @@ float Edge(float Origin, float Position, float Size) {
 
 	// First we find a relative position of a pixel
 	float Relation = Position - Origin;
-	float Result;
 
 	// Finding the distance from the edge and inverting it
-	if (Relation > 0.0) Result = 1.0 - (Relation - Size);
-	else Result = 1.0 + Relation;
-
-	// Clamping the value to it doesn't go below 0
-	return clamp(Result, 0.0, 1.0);
+	// Then clamping it so it doesn't go below 0
+	if (Relation > 0.0)
+	return clamp(1.0 - (Relation - Size), 0.0, 1.0);
+	return clamp(1.0 + Relation, 0.0, 1.0);
 }
 
 // Returns the left (or bottom for Y) position
