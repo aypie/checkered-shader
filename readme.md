@@ -1,4 +1,4 @@
-### Check-check
+## Check-check
 
 This is a GLSL fragment shader that takes two `vec3` colors and makes a moving
 checkered pattern using them. You can also define `MovX`, `MovY` and the `CheckSize`.
