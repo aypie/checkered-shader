@@ -26,7 +26,7 @@ void main(void) {
 	gl_FragColor = vec4(
 		mix(
 			ColorA, ColorB,
-			abs(Strip(Position.x) - Strip(Position.y))
+			abs(Stripe(Position.x) - Stripe(Position.y))
 		),
 		1.0
 	);
