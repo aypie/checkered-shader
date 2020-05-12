@@ -10,7 +10,7 @@ uniform float u_time;
 #define SpeedX 10.0
 #define SpeedY 20.0
 
-float Strip(float Position) {
+float Stripe(float Position) {
 	float Offset = mod(Position, CheckSize * 2.0);
 	return
 		clamp(1.0 - Offset, 0.0, 1.0) +
