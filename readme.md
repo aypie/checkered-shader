@@ -10,6 +10,6 @@ stripes from vertical stripes, and the absolute of the result will be a checkere
 then can use this pattern to mix our given colors and output the final color.
 
 Just this, however, only works for the static pattern and only for integer values of `CheckSize`.
-If we want a moving pattern without jittering - we need to add smooth edges to the stripes, and
+As we need a moving pattern without jittering - we need to add smooth edges to the stripes, and
 we do that using the `Stripe()` function that draws stripes considering the smoothness of the edges.
-To do that `Stripe()` takes into account pixel-wide linear fallofs on the edges of the stripes.
+To do that `Stripe()` draws pixel-wide linear falloffs on the edges of the stripes.
